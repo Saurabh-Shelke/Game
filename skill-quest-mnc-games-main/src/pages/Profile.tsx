@@ -14,7 +14,7 @@ const Profile = () => {
   const [profile, setProfile] = useState({
     name: "John Doe",
     email: "john.doe@company.com",
-    department: "Marketing",
+    department: "Development",
     joinDate: "January 2024",
     bio: "Passionate about team collaboration and innovative training methods."
   });
@@ -116,32 +116,10 @@ const Profile = () => {
                       <p className="text-sm">{profile.email}</p>
                     )}
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Department</label>
-                    {isEditing ? (
-                      <Input
-                        value={profile.department}
-                        onChange={(e) => setProfile(prev => ({ ...prev, department: e.target.value }))}
-                      />
-                    ) : (
-                      <p className="text-sm">{profile.department}</p>
-                    )}
-                  </div>
+                 
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-sm font-medium">Bio</label>
-                  {isEditing ? (
-                    <textarea
-                      className="w-full p-2 border rounded-md"
-                      rows={3}
-                      value={profile.bio}
-                      onChange={(e) => setProfile(prev => ({ ...prev, bio: e.target.value }))}
-                    />
-                  ) : (
-                    <p className="text-sm">{profile.bio}</p>
-                  )}
-                </div>
+                
               </CardContent>
             </Card>
           </TabsContent>

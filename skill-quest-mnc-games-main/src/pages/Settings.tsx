@@ -9,6 +9,8 @@ import { LogOut, User, Bell, Shield, Moon } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+
+
 const Settings = () => {
   const { logout } = useAuth();
   const navigate = useNavigate();
@@ -114,6 +116,8 @@ const Settings = () => {
                 <p className="text-sm text-gray-500">Enable dark theme</p>
               </div>
               <Switch />
+            
+
             </div>
             <div className="space-y-2">
               <Label htmlFor="language">Language</Label>

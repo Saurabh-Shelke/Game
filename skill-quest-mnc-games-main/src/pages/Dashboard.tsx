@@ -5,6 +5,8 @@ import { Progress } from "@/components/ui/progress";
 import { ChartContainer, ChartLegend, ChartLegendContent } from "@/components/ui/chart";
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
 import { Award, BookOpen, Check, Clock, Trophy } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+
 
 // Sample data for demonstration
 const progressData = [
@@ -60,6 +62,7 @@ const chartConfig = {
 };
 
 const Dashboard = () => {
+  const { user } = useAuth(); // ✅ Get current user  
   // Calculate total progress percentage across all modules
   const totalProgress = progressData.reduce((sum, item) => sum + item.value, 0) / progressData.length;
   
@@ -70,7 +73,10 @@ const Dashboard = () => {
         <section className="rounded-lg bg-gradient-to-r from-blue-600 to-blue-800 p-6 text-white animate-fade-in">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl md:text-3xl font-bold mb-2">Welcome back, Alex!</h1>
+              {/* <h1 className="text-2xl md:text-3xl font-bold mb-2">Welcome back, Alex!</h1> */}
+              <h1 className="text-2xl md:text-3xl font-bold mb-2">
+              Welcome back, {user?.name || "User"}!
+               </h1>
               <p className="opacity-90">Ready to continue your training journey?</p>
             </div>
             <div className="hidden md:block">
