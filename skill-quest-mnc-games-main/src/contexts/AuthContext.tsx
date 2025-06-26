@@ -171,7 +171,23 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
     setUser(data.user);
     setIsAuthenticated(true);
     localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("token", data.token); 
   };
+
+  // const signup = async (name: string, email: string, password: string) => {
+  //   const res = await fetch(`${API_URL}/signup`, {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ name, email, password }),
+  //   });
+
+  //   const data = await res.json();
+  //   if (!res.ok) throw new Error(data.message || "Signup failed");
+
+  //   setUser(data.user);
+  //   setIsAuthenticated(true);
+  //   localStorage.setItem("user", JSON.stringify(data.user));
+  // };
 
   const signup = async (name: string, email: string, password: string) => {
     const res = await fetch(`${API_URL}/signup`, {
@@ -179,14 +195,16 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ name, email, password }),
     });
-
+  
     const data = await res.json();
     if (!res.ok) throw new Error(data.message || "Signup failed");
-
+  
     setUser(data.user);
     setIsAuthenticated(true);
     localStorage.setItem("user", JSON.stringify(data.user));
+    localStorage.setItem("token", data.token); // ✅ this line is required
   };
+  
 
   const logout = () => {
     setUser(null);
